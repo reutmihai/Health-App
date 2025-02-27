@@ -15,13 +15,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@layer component {
+  .Link {
+    text-decoration: none;
+  }
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  text-decoration: none;
+
 }
 
 body {
