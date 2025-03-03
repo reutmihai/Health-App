@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 
-export const Home: React.FC = () => {
+export const HomePage: React.FC = () => {
       const [isAuthenticated] = useState(false); 
   return (
     <div className={isAuthenticated ? "min-h-screen flex" : "bg-[url('/bg.webp')] min-w-1200 bg-cover bg-center bg-fixed bg-no-repeat overflow-x-hidden "}>

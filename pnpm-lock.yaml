@@ -20,6 +20,9 @@ importers:
       react-router-dom:
         specifier: ^7.2.0
         version: 7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react-vite-ts-tailwind:
+        specifier: 'link:'
+        version: 'link:'
       tailwindcss:
         specifier: ^4.0.9
         version: 4.0.9

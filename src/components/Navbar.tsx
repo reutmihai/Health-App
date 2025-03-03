@@ -7,7 +7,7 @@ const Navbar = () => {
   const [isAuthenticated] = useState(false); 
 
   return (
-    <nav className="bg-white p-4 mt-10 mb-30 flex flex-start items-center max-w-[350px]">
+    <nav className="bg-white p-4 mt-10 flex flex-start items-center max-w-[350px]">
       {/* LOGO */}
       <Link to="/">
         <img src={logo} alt="SlimMom Logo"  className="w-25 h-10"/>
