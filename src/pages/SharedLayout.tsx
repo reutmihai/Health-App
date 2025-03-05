@@ -1,15 +1,12 @@
-// import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import HomeUser from "../components/HomeUser";
-import HomeGuest from "../components/HomeGuest";
+import { Outlet } from "react-router-dom";
 
 const SharedLayout: React.FC = () => {
-  const isAuthenticated = false;
   return (
-    <>
+    <div>
       <Navbar />
-       {isAuthenticated ? <HomeUser /> : <HomeGuest />}
-    </>
+       <Outlet />
+    </div>
   );
 };
 
