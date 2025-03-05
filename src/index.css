@@ -11,6 +11,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  max-height: 100vh;
+}
+
 @layer component {
   .Link {
     text-decoration: none;
@@ -21,13 +25,6 @@ a {
   font-weight: 500;
   text-decoration: none;
 
-}
-
-body {
-  margin: 0;
-  display: flex;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
