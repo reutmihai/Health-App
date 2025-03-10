@@ -1213,7 +1213,7 @@ packages:
 
   rollup@4.34.9:
     resolution: {integrity: sha512-nF5XYqWWp9hx/LrpC8sZvvvmq0TeTjQgaZHYmAgwysT9nh8sWnZhBnM8ZyVbbJFIQBLwHDNoMqsBZBbUo4U8sQ==}
-    engines: {node: '>=18.0.0', npm: '>=8.0.0'}
+    engines: {node: '>=18.0.0', pnpm: '>=8.0.0'}
     hasBin: true
 
   run-parallel@1.2.0:
