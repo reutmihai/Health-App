@@ -14,7 +14,7 @@ const HomeUser = () => {
 
       <div className="relative w-full max-w-[1280px] md:flex-row items-center">
         {/* 🔹 Stânga - Conținutul */}
-        <div className="w-full md:w-1/2 relative z-10 p-5 rounded-lg">
+        <div className="w-full md:w-1/2 relative z-10 pl-5">
           <FormCalorie />
         </div>
       </div>

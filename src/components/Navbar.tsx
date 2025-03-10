@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isAuthenticated] = useState(false);
 
   return (
-    <nav className="bg-transparent p-4 mt-5 lg:mt-10 flex justify-between items-center border-b border-gray-300 lg:border-0 lg:justify-start">
+    <nav className="bg-transparent p-4 lg:mt-10 flex justify-between items-center border-b border-gray-300 lg:border-0 lg:justify-start">
       {/* LOGO */}
       <picture>
         {/* LOGO pentru Desktop */}
@@ -23,7 +23,7 @@ const Navbar = () => {
         <img src={logoMobile} alt="SlimMom Logo" />
       </picture>
 
-      <div className="border-l border-gray-300 h-6 mx-3"></div>
+      <div className="hidden lg:block border-l border-gray-300 h-6 mx-3"></div>
 
       {/* Butoane din Navbar */}
       <div className="space-x-4">
