@@ -58,7 +58,7 @@ const FormTable: React.FC = () => {
 
           {/* Linie 3 */}
           <tr>
-            <td className="p-3 block sm:table-row">
+            <td className="p-2 block sm:table-row">
               <input
                 placeholder="Current weight *"
                 type="text"
@@ -67,7 +67,7 @@ const FormTable: React.FC = () => {
                 required
               />
             </td>
-            <td className="pl-3 block sm:table-cell text-gray-500">
+            <td className="pl-4 block sm:table-cell text-gray-500">
               <label className="block sm:hidden mb-2" htmlFor="blood-type">
                 Blood type *
               </label>
