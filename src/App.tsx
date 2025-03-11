@@ -7,7 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 function App() {
 
   return (
-    <Router basename="/HEALTH-APP">
+    <Router basename="/Health-App">
       <Routes>
           <Route path='/' element={<SharedLayout />} >
           <Route path='/' element={<HomePage />}>
