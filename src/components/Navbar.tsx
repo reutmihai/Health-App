@@ -6,7 +6,7 @@ import logoTablet from "/logoTablet.webp";
 import logoMobile from "/logoMobile.webp";
 
 const Navbar = () => {
-  const [isAuthenticated] = useState(false);
+  const [isAuthenticated] = useState(true);
 
   return (
     <nav className="bg-transparent p-4 lg:mt-10 flex justify-between items-center border-b border-gray-300 lg:border-0 lg:justify-start">

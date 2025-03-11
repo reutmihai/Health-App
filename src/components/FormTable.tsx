@@ -36,7 +36,7 @@ const FormTable: React.FC = () => {
   };
 
   return (
-    <div className="overflow-x-auto mt-7 sm:mt-20 flex flex-col items-center bg-transparent">
+    <div className="overflow-x-auto mt-7 sm:mt-10 flex flex-col items-center bg-transparent">
       <h2 className="mb-5 text-1xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800">
         Calculate your daily calorie intake right now
       </h2>
@@ -122,14 +122,14 @@ const FormTable: React.FC = () => {
       {/* Butonul pentru calcularea caloriilor */}
       <button
         onClick={handleCalculateCalories}
-        className="text-sm sm:text-lg md:text-xl lg:text-2xl bg-orange-400 text-white font-semibold px-4 py-1 rounded-lg mt-4"
+        className="text-sm  lg:text-md bg-orange-400 text-white font-semibold px-4 py-1 rounded-lg mt-4"
       >
         Start losing weight
       </button>
 
       {/* Modalul */}
       {isModalOpen && (
-  <div className="fixed inset-0 flex justify-center items-center sm:backdrop-blur-[3px] backdrop-blur-none">
+  <div className="fixed inset-0 flex sm:justify-center items-center sm:backdrop-blur-[3px] backdrop-blur-none">
     <div className="w-full h-screen mt-30 sm:h-auto max-w-[500px] bg-white sm:p-15 rounded-lg shadow-lg flex flex-col items-center ">
       
       {/* Bara de navigare pentru mobile */}
