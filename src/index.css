@@ -21,12 +21,28 @@ body {
   }
 }
 
+@layer utilities {
+  @media (min-width: 1024px) {
+    .bg-default {
+      background-image: url("/backgroundDesc.png");
+    }
+  }
+  @media (min-width: 768px ) and (max-width: 1023px) {
+    .bg-default {
+      background-image: url("/backgroundTablet.png");
+    }
+  }
+  @media (max-width: 767px) {
+    .bg-default {
+      background-image: none;
+    }
+  }
+}
+
 a {
   font-weight: 500;
   text-decoration: none;
-
 }
-
 
 button {
   border-radius: 20px;
