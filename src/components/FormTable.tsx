@@ -1,31 +1,31 @@
 import { useState, useEffect } from "react";
-import productsData from "../data/products.json"; // Calea către fișierul tău JSON
+import productsData from "../data/products.json"; 
 
 const FormTable: React.FC = () => {
   const [selectedBloodType, setSelectedBloodType] = useState<string>("");
   const [products, setProducts] = useState<any[]>([]);
   const [recommendedCalories, setRecommendedCalories] = useState<number | null>(null);
   const [forbiddenProducts, setForbiddenProducts] = useState<any[]>([]);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // Controlul modalului
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false); 
 
   // Încarcă produsele din JSON
   useEffect(() => {
-    setProducts(productsData); // Setează produsele în stare
+    setProducts(productsData); 
   }, []);
 
   const handleCalculateCalories = () => {
-    // Exemplu de calcul al caloriilor (poți adapta formula în funcție de nevoile tale)
+    // Calcul al caloriilor 
     const height = parseFloat((document.getElementById("height") as HTMLInputElement).value);
     const weight = parseFloat((document.getElementById("current-weight") as HTMLInputElement).value);
     const age = parseInt((document.getElementById("age") as HTMLInputElement).value);
 
     if (height && weight && age) {
-      const calories = weight * 24; // Exemplu de calcul simplu al caloriilor
+      const calories = weight * 24; // Calcul al caloriilor
       setRecommendedCalories(calories);
 
       // Filtrarea produselor interzise pe baza grupei de sânge
       const forbidden = products.filter((product) => product.groupBloodNotAllowed[selectedBloodType] === true);
-      setForbiddenProducts(forbidden.slice(0, 5));
+      setForbiddenProducts(forbidden.slice(0, 5)); // Primele 5 produse interzise
 
       setIsModalOpen(true); // Deschide modalul
     }
@@ -40,7 +40,7 @@ const FormTable: React.FC = () => {
       <h2 className="mb-5 text-1xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800">
         Calculate your daily calorie intake right now
       </h2>
-      <table className="w-full table-fixed text-sm sm:text-lg md:text-xl lg:text-2xl">
+      <table className="w-full table-fixed text-sm sm:text-lg md:text-xl lg:text-xl">
         <tbody>
           {/* Formularul de date */}
           <tr className="block sm:table-row">

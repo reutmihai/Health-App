@@ -1,8 +1,8 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-// import { Login } from './pages/Login';
-// import { Register } from './pages/Register';
 import SharedLayout from './pages/SharedLayout';
 import { HomePage } from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
 
@@ -12,8 +12,8 @@ function App() {
           <Route path='/' element={<SharedLayout />} >
           <Route path='/' element={<HomePage />}>
           </Route>
-          {/* <Route path='/login' element={<Login />} />
-          <Route path='/login' element={<Register />} /> */}
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
           </Route>
         </Routes>
     </Router>

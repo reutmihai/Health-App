@@ -11,9 +11,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  max-height: 100vh;
-}
 
 @layer component {
   .Link {
@@ -39,23 +36,11 @@ body {
   }
 }
 
-a {
-  font-weight: 500;
-  text-decoration: none;
-}
 
 button {
   border-radius: 20px;
-  border: 1px solid transparent;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
