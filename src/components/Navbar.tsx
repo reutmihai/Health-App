@@ -11,6 +11,7 @@ const Navbar = () => {
   return (
     <nav className="bg-transparent p-4 lg:mt-10 flex justify-between items-center border-b border-gray-300 lg:border-0 lg:justify-start">
       {/* LOGO */}
+      <Link to='/'>
       <picture>
         {/* LOGO pentru Desktop */}
         <source srcSet={logoDesktop} media="(min-width: 1024px)" />
@@ -19,9 +20,10 @@ const Navbar = () => {
           srcSet={logoTablet}
           media="(min-width: 768px) and (max-width: 1023px)"
         />
-        {/* LOGO pentru Mobile (fallback) */}
+        {/* LOGO pentru Mobile */}
         <img src={logoMobile} alt="SlimMom Logo" />
       </picture>
+      </Link>
 
       <div className="hidden lg:block border-l border-gray-300 h-6 mx-3"></div>
 
