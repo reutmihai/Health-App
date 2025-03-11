@@ -12,9 +12,9 @@ const HomeUser = () => {
 </div>
 
 
-      <div className="relative w-full max-w-[1280px] md:flex-row items-center">
+      <div className="relative w-full md:flex-row items-center">
         {/* 🔹 Stânga - Conținutul */}
-        <div className="w-full md:w-1/2 relative z-10 pl-5">
+        <div className="w-full md:w-1/2 relative z-10 pl-3">
           <FormTable />
         </div>
       </div>
