@@ -1,4 +1,4 @@
-import FormCalorie from "./FormCalorie"
+import FormTable from "./FormTable"
 import "../index.css"
 
 const HomeUser = () => {
@@ -15,7 +15,7 @@ const HomeUser = () => {
       <div className="relative w-full max-w-[1280px] md:flex-row items-center">
         {/* 🔹 Stânga - Conținutul */}
         <div className="w-full md:w-1/2 relative z-10 pl-5">
-          <FormCalorie />
+          <FormTable />
         </div>
       </div>
     </div>
