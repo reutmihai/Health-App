@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../index.css";
 
 const FormTable: React.FC = () => {
   const [selectedBloodType, setSelectedBloodType] = useState("");
