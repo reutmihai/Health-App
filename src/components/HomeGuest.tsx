@@ -1,7 +1,7 @@
 import FormTable from "./FormTable";
 import "../index.css";
 
-const HomeUser = () => {
+const HomeGuest = () => {
   return (
     <div className="relative max-h-screen overflow-hidden flex items-center">
       {/* 🔹 Fundalul  */}
@@ -17,4 +17,4 @@ const HomeUser = () => {
   );
 };
 
-export default HomeUser;
+export default HomeGuest;

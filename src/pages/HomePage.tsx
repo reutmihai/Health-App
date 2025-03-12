@@ -1,9 +1,16 @@
 import React, { useState } from 'react'
-import HomeUser from '../components/HomeUser';
 import HomeGuest from "../components/HomeGuest";
+import HomeUser from "../components/HomeUser";
+import { auth } from "../firebaseConfig";
 
 export const HomePage: React.FC = () => {
-      const [isAuthenticated] = useState(true); 
+
+      const [isAuthenticated] = useState(false); 
+      
+
+console.log("Firebase initialized:", auth);
+
+
   return (
     <>
     {isAuthenticated ? <HomeUser /> : <HomeGuest />}
