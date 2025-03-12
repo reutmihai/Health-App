@@ -1,11 +1,20 @@
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { Outlet } from "react-router-dom";
+import Dashboard from "../components/Dashboard";
 
-const SharedLayout: React.FC = () => {
+const SharedLayout = () => {
+  const location = useLocation();
+  const showDashboard = location.pathname === "/calculator" || location.pathname === "/diary";
+
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-       <Outlet />
+      <div className="flex flex-grow">
+        {showDashboard && <Dashboard />} 
+        <main className="flex-grow">
+          <Outlet /> 
+        </main>
+      </div>
     </div>
   );
 };

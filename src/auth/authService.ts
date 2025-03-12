@@ -1,8 +1,26 @@
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged } from "firebase/auth";
 import { app } from "../firebaseConfig"; // Importă app pentru a obține instanța Firebase
 
 // Obține instanța de autentificare
-const auth = getAuth(app);
+export const auth = getAuth(app);
+
+// Deconectare utilizator
+export const logoutUser = async () => {
+  try {
+    await signOut(auth);
+    console.log("User logged out");
+  } catch (error) {
+    console.error("Logout error:", error);
+    throw error;
+  }
+};
+
+// Verifica daca utilizatorul este autentificat
+export const checkAuthStatus = (callback: (user: any) => void) => {
+    return onAuthStateChanged(auth, (user) => {
+      callback(user);
+    });
+  };
 
 // Înregistrare utilizator
 export const registerUser = async (name: string, email: string, password: string) => {

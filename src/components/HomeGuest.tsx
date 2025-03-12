@@ -1,16 +1,11 @@
-import FormTable from "./FormTable"
-import "../index.css"
+import FormTable from "./FormTable";
+import "../index.css";
 
-const HomeUser = () => {
+const HomeGuest = () => {
   return (
     <div className="relative max-h-screen overflow-hidden flex items-center">
-
       {/* 🔹 Fundalul  */}
-      <div
-  className="fixed top-0 left-0 w-full h-full bg-cover bg-center z-[-1] bg-default"
->
-</div>
-
+      <div className="fixed top-0 left-0 w-full h-full bg-cover bg-center z-[-1] bg-default"></div>
 
       <div className="relative w-full md:flex-row items-center">
         {/* 🔹 Stânga - Conținutul */}
@@ -22,4 +17,4 @@ const HomeUser = () => {
   );
 };
 
-export default HomeUser;
+export default HomeGuest;
