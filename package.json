@@ -12,9 +12,12 @@
     "homepage": "https://reutmihai.github.io/Health-App"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.0.9",
     "firebase": "^11.4.0",
+    "heroicons": "^2.2.0",
     "react": "^19.0.0",
+    "react-datepicker": "^8.2.1",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.2.0",
     "react-vite-ts-tailwind": "workspace:*",
