@@ -36,8 +36,8 @@ const FormTable: React.FC = () => {
   };
 
   return (
-    <div className="overflow-x-auto mt-7 sm:mt-10 flex flex-col items-center bg-transparent">
-      <h2 className="mb-5 text-1xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800">
+    <div className="overflow-x-auto  mt-5 sm:mt-10 flex flex-col items-center bg-transparent">
+      <h2 className="sm:mb-5 text-1xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800">
         Calculate your daily calorie intake right now
       </h2>
       <table className="w-full table-fixed text-sm sm:text-lg md:text-xl lg:text-xl">
