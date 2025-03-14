@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomeUser from "./components/HomeUser";
 import DiaryPage from "./pages/DiaryPage";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/calculator" element={<HomeUser />} />
           <Route path="/diary" element={<DiaryPage />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Router>
