@@ -1,9 +1,17 @@
 import { useState, useEffect } from "react";
-import { useFood } from "./FoodContext"; // Importă contextul
+import { useFood } from "./FoodContext";
 import foods from "../data/products.json";
 import FoodList from "./FoodList";
+import FullScreenModal from "./FullScreenModal";
 
 const FoodInput = () => {
+  const { addFood } = useFood();
+  const [query, setQuery] = useState("");
+  const [filteredFoods, setFilteredFoods] = useState<Food[]>([]);
+  const [selectedFood, setSelectedFood] = useState<Food | null>(null);
+  const [grams, setGrams] = useState<number | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   interface Food {
     _id: { $oid: string };
     categories: string;
@@ -13,12 +21,7 @@ const FoodInput = () => {
     groupBloodNotAllowed: (boolean | null)[];
     __v: number;
   }
-
-  const { addFood } = useFood();
-  const [query, setQuery] = useState("");
-  const [filteredFoods, setFilteredFoods] = useState<Food[]>([]);
-  const [selectedFood, setSelectedFood] = useState<Food | null>(null);
-  const [grams, setGrams] = useState<number | null>(null);
+  
 
   useEffect(() => {
     if (query.length > 0) {
@@ -34,7 +37,11 @@ const FoodInput = () => {
   const handleSelectFood = (food: Food) => {
     setSelectedFood(food);
     setQuery(food.title);
-    setFilteredFoods([]); // Ascunde dropdown-ul
+    setFilteredFoods([]);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   const handleAddFood = () => {
@@ -47,14 +54,18 @@ const FoodInput = () => {
     };
 
     addFood(newFood);
-    setQuery(""); // Reset input
+    setQuery("");
     setSelectedFood(null);
-    setGrams(null); // Reset gramaj
+    setGrams(null);
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
   };
 
   return (
-    <div className="flex flex-col">
-      <div className="flex gap-10">
+    <div className="flex flex-col mr-10 overflow-auto h-screen ">
+      <div className="hidden sm:flex gap-10">
         <input
           type="text"
           placeholder="Enter product name"
@@ -64,7 +75,7 @@ const FoodInput = () => {
         />
 
         {filteredFoods.length > 0 && (
-          <ul className="absolute bg-white border mt-1 max-h-60 overflow-y-auto">
+          <ul className="absolute bg-white border mt-13 max-h-60 max-w-50 overflow-y-auto">
             {filteredFoods.map((food) => (
               <li
                 key={food._id.$oid}
@@ -93,7 +104,30 @@ const FoodInput = () => {
           </button>
         </div>
       </div>
+
       <FoodList />
+
+      {/* Open Modal Button */}
+      <button
+        onClick={handleOpenModal}
+        className="flex self-center sm:hidden bg-orange-400 text-white font-semibold mt-5 px-4 py-2 rounded shadow-xl"
+      >
+        +
+      </button>
+
+      {/* Full-Screen  Modal*/}
+      {isModalOpen && (
+        <FullScreenModal
+          query={query}
+          setQuery={setQuery}
+          grams={grams}
+          setGrams={setGrams}
+          handleAddFood={handleAddFood}
+          handleCloseModal={handleCloseModal}
+          foods={foods} 
+          setSelectedFood={setSelectedFood}
+        />
+      )}
     </div>
   );
 };

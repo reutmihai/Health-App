@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 interface FoodItem {
   title: string;
@@ -10,6 +10,7 @@ interface FoodContextType {
   foodList: FoodItem[];
   addFood: (food: FoodItem) => void;
   removeFood: (index: number) => void;
+  clearFoodList: () => void;
   totalCalories: number;
   remainingCalories: number;
   dailyRate: number;
@@ -21,7 +22,11 @@ const FoodContext = createContext<FoodContextType | undefined>(undefined);
 
 export const FoodProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [foodList, setFoodList] = useState<FoodItem[]>([]);
-  const dailyRate = 2000; // Necesarul zilnic de calorii (poți schimba)
+  const dailyRate = 2000; 
+
+  useEffect(() => {
+    localStorage.setItem("foodList", JSON.stringify(foodList));
+  }, [foodList]);
 
   const addFood = (food: FoodItem) => {
     setFoodList((prev) => [...prev, food]);
@@ -31,14 +36,21 @@ export const FoodProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setFoodList((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const clearFoodList = () => {
+    setFoodList([]); 
+  };
+
+
+
   const totalCalories = foodList.reduce((acc, food) => acc + food.calories, 0);
   const remainingCalories = dailyRate - totalCalories;
   const percentageOfNormal = ((totalCalories / dailyRate) * 100).toFixed(1);
 
-  // Identifică mâncarea nerecomandată (exemplu de filtru)
+  // Not recommanded food
   const forbiddenFoods = foodList
-    .filter((food) => food.title.toLowerCase().includes("sugar")) // Exemplu: orice conține "sugar"
+    .filter((food) => food.title.toLowerCase().includes("sugar")) 
     .map((food) => food.title);
+
 
   return (
     <FoodContext.Provider
@@ -46,6 +58,7 @@ export const FoodProvider: React.FC<{ children: React.ReactNode }> = ({ children
         foodList,
         addFood,
         removeFood,
+        clearFoodList,
         totalCalories,
         remainingCalories,
         dailyRate,

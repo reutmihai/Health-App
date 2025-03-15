@@ -8,22 +8,22 @@ const FormTable: React.FC = () => {
   const [forbiddenProducts, setForbiddenProducts] = useState<any[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false); 
 
-  // Încarcă produsele din JSON
+  // JSON
   useEffect(() => {
     setProducts(productsData); 
   }, []);
 
   const handleCalculateCalories = () => {
-    // Calcul al caloriilor 
+    // kcal calc
     const height = parseFloat((document.getElementById("height") as HTMLInputElement).value);
     const weight = parseFloat((document.getElementById("current-weight") as HTMLInputElement).value);
     const age = parseInt((document.getElementById("age") as HTMLInputElement).value);
 
     if (height && weight && age) {
-      const calories = weight * 24; // Calcul al caloriilor
+      const calories = weight * 24; 
       setRecommendedCalories(calories);
 
-      // Filtrarea produselor interzise pe baza grupei de sânge
+      // Not recommanded products filtred based on blood group
       const forbidden = products.filter((product) => product.groupBloodNotAllowed[selectedBloodType] === true);
       setForbiddenProducts(forbidden.slice(0, 5)); // Primele 5 produse interzise
 
@@ -32,17 +32,17 @@ const FormTable: React.FC = () => {
   };
 
   const closeModal = () => {
-    setIsModalOpen(false); // Închide modalul
+    setIsModalOpen(false); // Close modal
   };
 
   return (
-    <div className="overflow-x-auto mt-7 sm:mt-10 flex flex-col items-center bg-transparent">
-      <h2 className="mb-5 text-1xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800">
+    <div className="overflow-x-auto  mt-5 sm:mt-10 flex flex-col items-center bg-transparent">
+      <h2 className="sm:mb-5 text-1xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800">
         Calculate your daily calorie intake right now
       </h2>
       <table className="w-full table-fixed text-sm sm:text-lg md:text-xl lg:text-xl">
         <tbody>
-          {/* Formularul de date */}
+          {/* Data Form */}
           <tr className="block sm:table-row">
             <td className="p-3 block md:table-cell">
               <input
@@ -87,7 +87,7 @@ const FormTable: React.FC = () => {
             </td>
           </tr>
 
-          {/* Selectarea grupei de sânge */}
+          {/* Blood group */}
           <tr>
             <td className="p-2 block sm:table-row">
               <input
@@ -119,7 +119,7 @@ const FormTable: React.FC = () => {
         </tbody>
       </table>
 
-      {/* Butonul pentru calcularea caloriilor */}
+      {/* Button for calc kcal */}
       <button
         onClick={handleCalculateCalories}
         className="text-sm  lg:text-md bg-orange-400 text-white font-semibold px-4 py-1 rounded-lg mt-4"
@@ -127,18 +127,18 @@ const FormTable: React.FC = () => {
         Start losing weight
       </button>
 
-      {/* Modalul */}
+      {/* Modal */}
       {isModalOpen && (
   <div className="fixed inset-0 flex sm:justify-center items-center sm:backdrop-blur-[3px] backdrop-blur-none">
     <div className="w-full h-screen mt-30 sm:h-auto max-w-[500px] bg-white sm:p-15 rounded-lg shadow-lg flex flex-col items-center ">
       
-      {/* Bara de navigare pentru mobile */}
+      {/* Mobile navigation */}
       <div className="w-full flex justify-between items-center mb-4 sm:hidden bg-gray-100">
         <button
           onClick={closeModal}
           className="text-1xl pl-2 font-bold"
         >
-          &larr; {/* Săgeata de întoarcere */}
+          &larr; {/* Back arrow */}
         </button>
       </div>
 
