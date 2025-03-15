@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./Navbar";
+import MobileUserBar from "./MobileUserbar";
 
 interface FullScreenModalProps {
   query: string;
@@ -50,10 +51,10 @@ const FullScreenModal: React.FC<FullScreenModalProps> = ({
     <div className="fixed inset-0 bg-white z-50 flex flex-col">
       {/* Navbar */}
       <Navbar />
+      <MobileUserBar />
 
       {/* Content of form*/}
       <div className="flex flex-col justify-center items-center mt-20 p-4">
-        {/* Input pentru numele produsului */}
         <input
           type="text"
           placeholder="Enter product name"
@@ -62,7 +63,7 @@ const FullScreenModal: React.FC<FullScreenModalProps> = ({
           className="border-b p-2 w-3/4 mb-4"
         />
 
-        {/* Afișarea listei de alimente filtrate */}
+        {/* Filtred list */}
         {filteredFoods.length > 0 && (
           <ul className="flexbg-white border sm:mt-13 max-h-60 max-w-50 overflow-y-auto">
             {filteredFoods.map((food) => (
