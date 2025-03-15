@@ -8,7 +8,7 @@ const DiaryPage: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   return (
-    <div className="mt-20 ml-5 relative">
+    <div className=" mt-10 sm:mt-20 ml-5 relative">
       <DatePicker
         selected={selectedDate}
         onChange={(date: Date | null) => date && setSelectedDate(date)}

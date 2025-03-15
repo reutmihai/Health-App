@@ -64,7 +64,7 @@ const FoodInput = () => {
   };
 
   return (
-    <div className="flex flex-col mr-10">
+    <div className="flex flex-col mr-10 overflow-auto h-screen ">
       <div className="hidden sm:flex gap-10">
         <input
           type="text"
@@ -110,7 +110,7 @@ const FoodInput = () => {
       {/* Open Modal Button */}
       <button
         onClick={handleOpenModal}
-        className="flex self-center sm:hidden bg-orange-400 text-white font-semibold ml-10 px-4 py-2 rounded shadow-xl"
+        className="flex self-center sm:hidden bg-orange-400 text-white font-semibold mt-5 px-4 py-2 rounded shadow-xl"
       >
         +
       </button>
