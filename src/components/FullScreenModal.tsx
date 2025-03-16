@@ -51,7 +51,7 @@ const FullScreenModal: React.FC<FullScreenModalProps> = ({
     <div className="fixed inset-0 bg-white z-50 flex flex-col">
       {/* Navbar */}
       <Navbar />
-      <MobileUserBar />
+      <MobileUserBar isSearchModalOpen={true} handleCloseModal={handleCloseModal}/>
 
       {/* Content of form*/}
       <div className="flex flex-col justify-center items-center mt-20 p-4">
@@ -95,14 +95,6 @@ const FullScreenModal: React.FC<FullScreenModalProps> = ({
           className="bg-orange-400 text-white font-semibold px-15 py-2 mt-10 rounded shadow-xl"
         >
           Add
-        </button>
-
-        {/* Close Modal Button */}
-        <button
-          onClick={handleCloseModal}
-          className="mt-4 bg-gray-500 text-white font-semibold px-4 py-2 rounded"
-        >
-          Close
         </button>
       </div>
     </div>

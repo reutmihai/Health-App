@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth, logoutUser } from "../auth/authService";
 
-const MobileUserBar = () => {
+const MobileUserBar = ({ isSearchModalOpen, handleCloseModal }: { isSearchModalOpen?: boolean; handleCloseModal?: () => void }) => {
   const [user, setUser] = useState(auth.currentUser);
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
@@ -17,20 +16,19 @@ const MobileUserBar = () => {
 
   const shortName = user?.displayName?.slice(0, 3) || "USR";
 
-  const isInModal = true;
-
   const [isOpen, setIsOpen] = useState(false);
+  const handleLogout = async () => {
+    await logoutUser(navigate); 
+  };
   return (
     <div className="flex justify-between items-center pr-3 w-full bg-gray-200 md:hidden">
       <div>
-        {true && (
-          <button
-            onClick={() => navigate(-1)}
-            className="text-1xl pl-2 font-bold"
-          >
-            &larr; {/* Back arrow */}
-          </button>
-        )}
+        {/* Back arrow */}
+      {isSearchModalOpen && (
+        <button onClick={handleCloseModal} className="text-1xl pl-2 font-bold">
+          &larr; 
+        </button>
+      )}
       </div>
       <div className="flex">
         <button onClick={() => setIsOpen(!isOpen)} className=" text-black py-2">
@@ -40,7 +38,7 @@ const MobileUserBar = () => {
         <div className="border border-l border-gray-300 my-1 mx-1 "></div>
 
         <button
-          onClick={logoutUser}
+          onClick={handleLogout}
           className="py-2 text-gray-500  hover:font-bold hover:text-black"
         >
           Exit

@@ -122,7 +122,7 @@ const FormTable: React.FC = () => {
       {/* Button for calc kcal */}
       <button
         onClick={handleCalculateCalories}
-        className="text-sm  lg:text-md bg-orange-400 text-white font-semibold px-4 py-1 rounded-lg mt-4"
+        className="text-sm  lg:text-md bg-orange-400 text-white font-semibold px-4 py-2 rounded-lg mt-4"
       >
         Start losing weight
       </button>
@@ -159,7 +159,7 @@ const FormTable: React.FC = () => {
 
       <button
         onClick={closeModal}
-        className="text-xs sm:text-sm bg-orange-400 text-white font-semibold px-4 py-1 rounded-lg mt-4"
+        className="text-xs sm:text-sm bg-orange-400 text-white font-semibold px-4 py-2 rounded-lg mt-4"
       >
         Start losing weight
       </button>

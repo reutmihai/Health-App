@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-transparent p-4 lg:mt-10 flex justify-between items-center border-b border-gray-300 lg:border-0 lg:justify-start">
-      <Link to="/">
+     <Link to={isAuthenticated ? "/calculator" : "/"}>
         <picture>
           <source srcSet={logoDesktop} media="(min-width: 1024px)" />
           <source srcSet={logoTablet} media="(min-width: 768px) and (max-width: 1023px)" />
