@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import productsData from "../data/products.json"; 
+import MobileUserBar from "./MobileUserbar";
+import Navbar from "./Navbar";
 
 const FormTable: React.FC = () => {
   const [selectedBloodType, setSelectedBloodType] = useState<string>("");
@@ -25,9 +27,9 @@ const FormTable: React.FC = () => {
 
       // Not recommanded products filtred based on blood group
       const forbidden = products.filter((product) => product.groupBloodNotAllowed[selectedBloodType] === true);
-      setForbiddenProducts(forbidden.slice(0, 5)); // Primele 5 produse interzise
+      setForbiddenProducts(forbidden.slice(0, 5)); 
 
-      setIsModalOpen(true); // Deschide modalul
+      setIsModalOpen(true); // Open modal
     }
   };
 
@@ -130,27 +132,19 @@ const FormTable: React.FC = () => {
       {/* Modal */}
       {isModalOpen && (
   <div className="fixed inset-0 flex sm:justify-center items-center sm:backdrop-blur-[3px] backdrop-blur-none">
-    <div className="w-full h-screen mt-30 sm:h-auto max-w-[500px] bg-white sm:p-15 rounded-lg shadow-lg flex flex-col items-center ">
-      
-      {/* Mobile navigation */}
-      <div className="w-full flex justify-between items-center mb-4 sm:hidden bg-gray-100">
-        <button
-          onClick={closeModal}
-          className="text-1xl pl-2 font-bold"
-        >
-          &larr; {/* Back arrow */}
-        </button>
-      </div>
-
+    <div className="w-full h-screen sm:h-auto max-w-[500px] bg-white sm:p-15 rounded-lg shadow-lg flex flex-col ">
+      <Navbar />
+      <MobileUserBar isSearchModalOpen={true} handleCloseModal={closeModal}/>
+      <div className="flex flex-col items-center mt-20 px-3">
       <h2 className="text-xl sm:text-2xl font-bold mb-4 text-center">Your recommended daily calorie intake is</h2>
       <h1 className="text-3xl sm:text-5xl text-[#1b3287] font-bold text-center">{recommendedCalories} <span className="text-xl">calories</span></h1>
       <div className="block w-full border-b border-gray-300 my-3"></div>
 
-      <h4 className="text-sm sm:text-sm font-bold mb-2 text-left">Foods you should not eat</h4>
+      <h4 className="text-sm sm:text-sm font-bold mb-2">Foods you should not eat</h4>
       {forbiddenProducts.length > 0 ? (
-        <div>
+        <div className="flex flex-col gap-2">
           {forbiddenProducts.map((product, index) => (
-            <p key={product._id.$oid} className="text-gray-500 text-xs sm:text-sm">{index + 1}. {product.title}</p>
+            <p key={product._id.$oid} className="text-gray-500 text-sm sm:text-sm">{index + 1}. {product.title}</p>
           ))}
         </div>
       ) : (
@@ -163,6 +157,7 @@ const FormTable: React.FC = () => {
       >
         Start losing weight
       </button>
+    </div>
     </div>
   </div>
 )}

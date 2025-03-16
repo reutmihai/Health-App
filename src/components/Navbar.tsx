@@ -8,7 +8,7 @@ import logoTablet from "/logoTablet.webp";
 import logoMobile from "/logoMobile.webp";
 import Userbar from "./Userbar";
 
-const Navbar = () => {
+const Navbar:React.FC = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
