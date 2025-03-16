@@ -40,7 +40,9 @@ const Navbar = () => {
           <p className="text-gray-400">Loading...</p>
         ) : isAuthenticated ? (
           <div className="flex gap-5 items-center">
+            <div className="hidden sm:block lg:hidden">
             <Userbar />
+            </div>
             <NavLink to="/diary" className={({ isActive }) => isActive ? "text-orange-500 font-bold border-b-2 border-orange-500" : "text-gray-400 hover:text-gray-700"}>Diary</NavLink>
             <NavLink to="/calculator" className={({ isActive }) => isActive ? "text-orange-500 font-bold border-b-2 border-orange-500" : "text-gray-400 hover:text-gray-700"}>Calculator</NavLink>
           </div>
