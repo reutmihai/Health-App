@@ -1,30 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser, checkAuthStatus } from "../auth/authService"; 
+import { loginUser, checkAuthStatus } from "../auth/authService";
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState(""); 
-  const [password, setPassword] = useState(""); 
-  const [error, setError] = useState(""); 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await loginUser(email, password); 
-      navigate("/calculator"); 
-    } catch (err: any) {
-      setError(err.message); 
-    } 
+      await loginUser(email, password);
+      navigate("/calculator");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
+    }
   };
 
   useEffect(() => {
-    checkAuthStatus((user) => {
+    const unsubscribe = checkAuthStatus((user) => {
       if (user) {
         navigate("/calculator");
       }
     });
-  }, []);
+
+    return () => unsubscribe();
+  }, [navigate]);
 
   return (
     <div className="flex items-center justify-center sm:block h-screen px-3 sm:px-0 sm:mt-15">
@@ -38,7 +44,7 @@ const LoginPage: React.FC = () => {
             type="email"
             id="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)} 
+            onChange={(e) => setEmail(e.target.value)}
             className="border-b border-gray-300 p-2 w-full outline-none focus:border-black"
             required
           />
@@ -47,7 +53,7 @@ const LoginPage: React.FC = () => {
             type="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)} 
+            onChange={(e) => setPassword(e.target.value)}
             className="border-b border-gray-300 p-2 w-full outline-none focus:border-black"
             required
           />

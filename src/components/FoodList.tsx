@@ -1,6 +1,7 @@
+import React from "react";
 import { useFood } from "./FoodContext";
 
-const FoodList = () => {
+const FoodList : React.FC = () => {
   const { foodList, removeFood } = useFood();
 
   return (
@@ -8,10 +9,19 @@ const FoodList = () => {
       {foodList.length > 0 && (
         <ul className=" mt-3 max-h-60 max-w-150 overflow-y-auto">
           {foodList.map((item, index) => (
-            <li key={index} className="flex justify-between max-w-[200] max-h-200 overflow-y-auto text-sm">
-              <span className="p-2 border-b border-gray-300 w-30">{item.title}</span>
-              <span className="p-2 border-b border-gray-300 w-20">{item.grams}g</span>
-              <span className="p-2 border-b border-gray-300 w-30">{item.calories.toFixed(2)} kcal</span>
+            <li
+              key={index}
+              className="flex justify-between max-w-[200] max-h-200 overflow-y-auto text-sm"
+            >
+              <span className="p-2 border-b border-gray-300 w-30">
+                {item.title}
+              </span>
+              <span className="p-2 border-b border-gray-300 w-20">
+                {item.grams}g
+              </span>
+              <span className="p-2 border-b border-gray-300 w-30">
+                {item.calories.toFixed(2)} kcal
+              </span>
               <button
                 onClick={() => removeFood(index)}
                 className="text-gray-300 font-semibold text-sm hover:text-red-500"

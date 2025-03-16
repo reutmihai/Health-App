@@ -7,7 +7,7 @@ import HomeUser from "./components/HomeUser";
 import DiaryPage from "./pages/DiaryPage";
 import NotFound from "./pages/NotFound";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router basename="/Health-App">
       <Routes>
