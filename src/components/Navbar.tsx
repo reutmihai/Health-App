@@ -6,6 +6,7 @@ import "../index.css";
 import logoDesktop from "/logoDesktop.png";
 import logoTablet from "/logoTablet.webp";
 import logoMobile from "/logoMobile.webp";
+import Userbar from "./Userbar";
 
 const Navbar = () => {
 
@@ -38,10 +39,11 @@ const Navbar = () => {
         {loading ? ( 
           <p className="text-gray-400">Loading...</p>
         ) : isAuthenticated ? (
-          <>
+          <div className="flex gap-5 items-center">
+            <Userbar />
             <NavLink to="/diary" className={({ isActive }) => isActive ? "text-orange-500 font-bold border-b-2 border-orange-500" : "text-gray-400 hover:text-gray-700"}>Diary</NavLink>
             <NavLink to="/calculator" className={({ isActive }) => isActive ? "text-orange-500 font-bold border-b-2 border-orange-500" : "text-gray-400 hover:text-gray-700"}>Calculator</NavLink>
-          </>
+          </div>
         ) : (
           <>
             <NavLink to="/login" className={({ isActive }) => isActive ? "text-orange-500 font-bold border-b-2 border-orange-500" : "text-gray-400 hover:text-gray-700"}>Log In</NavLink>
