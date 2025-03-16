@@ -16,9 +16,9 @@ export const logoutUser = async (navigate: (path: string) => void) => {
   }
 };
 
-export const checkAuthStatus = (callback: (user: any) => void) => {
+export const checkAuthStatus = (callback: (user: string | null) => void) => {
     return onAuthStateChanged(auth, (user) => {
-      callback(user);
+      callback(user ? user.uid : null);
     });
   };
 

@@ -21,7 +21,7 @@ const MobileUserBar = ({ isSearchModalOpen, handleCloseModal }: { isSearchModalO
     await logoutUser(navigate); 
   };
   return (
-    <div className="flex justify-between items-center pr-3 w-full bg-gray-200 md:hidden">
+    <div className="flex justify-between items-center pr-3 w-full bg-gray-200 sm:hidden">
       <div>
         {/* Back arrow */}
       {isSearchModalOpen && (
