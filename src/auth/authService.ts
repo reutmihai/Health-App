@@ -5,10 +5,11 @@ import { app } from "../firebaseConfig";
 export const auth = getAuth(app);
 
 
-export const logoutUser = async () => {
+export const logoutUser = async (navigate: (path: string) => void) => {
   try {
     await signOut(auth);
     console.log("User logged out");
+    navigate("/");
   } catch (error) {
     console.error("Logout error:", error);
     throw error;
