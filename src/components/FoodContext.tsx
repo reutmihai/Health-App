@@ -20,12 +20,39 @@ interface FoodContextType {
 
 const FoodContext = createContext<FoodContextType | undefined>(undefined);
 
-export const FoodProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const FoodProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [foodList, setFoodList] = useState<FoodItem[]>([]);
-  const dailyRate = 2000; 
+  const [totalCalories, setTotalCalories] = useState<number>(0);
+  const [remainingCalories, setRemainingCalories] = useState<number>(0);
+  const [percentageOfNormal, setPercentageOfNormal] = useState<number>(0);
+  const [forbiddenFoods, setForbiddenFoods] = useState<string[]>([]);
+  const dailyRate = 2000;
 
   useEffect(() => {
+    // Check if food list exists in localStorage and load it
+    const storedFoodList = localStorage.getItem("foodList");
+    if (storedFoodList) {
+      setFoodList(JSON.parse(storedFoodList));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Update localStorage every time foodList changes
     localStorage.setItem("foodList", JSON.stringify(foodList));
+
+    // Calculate calories and forbidden foods whenever the foodList is updated
+    const total = foodList.reduce((acc, food) => acc + food.calories, 0);
+    setTotalCalories(total);
+    setRemainingCalories(dailyRate - total);
+    setPercentageOfNormal(parseFloat(((total / dailyRate) * 100).toFixed(1)));
+
+    // Update forbidden foods
+    const forbidden = foodList
+      .filter((food) => food.title.toLowerCase().includes("sugar"))
+      .map((food) => food.title);
+    setForbiddenFoods(forbidden);
   }, [foodList]);
 
   const addFood = (food: FoodItem) => {
@@ -37,20 +64,8 @@ export const FoodProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const clearFoodList = () => {
-    setFoodList([]); 
+    setFoodList([]);
   };
-
-
-
-  const totalCalories = foodList.reduce((acc, food) => acc + food.calories, 0);
-  const remainingCalories = dailyRate - totalCalories;
-  const percentageOfNormal = ((totalCalories / dailyRate) * 100).toFixed(1);
-
-  // Not recommanded food
-  const forbiddenFoods = foodList
-    .filter((food) => food.title.toLowerCase().includes("sugar")) 
-    .map((food) => food.title);
-
 
   return (
     <FoodContext.Provider

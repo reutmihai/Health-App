@@ -43,9 +43,9 @@ const Navbar: React.FC = () => {
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
         {isAuthenticated && (
-        <div className="hidden sm:block lg:hidden">
-          <Userbar />
-        </div>
+          <div className="hidden sm:block lg:hidden">
+            <Userbar />
+          </div>
         )}
       </div>
 
@@ -111,64 +111,64 @@ const Navbar: React.FC = () => {
       >
         {/* MENU OPTIONS */}
         {isAuthenticated ? (
-        <ul className="flex flex-col items-center gap-6 mt-20 text-lg">
-           <li>
-            <NavLink
-              to="/diary"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-orange-500 font-bold"
-                  : "text-gray-300 hover:text-gray-500"
-              }
-              onClick={() => setIsOpen(false)}
-            >
-              DIARY
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/calculator"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-orange-500 font-bold"
-                  : "text-gray-300 hover:text-gray-500"
-              }
-              onClick={() => setIsOpen(false)}
-            >
-              CALCULATOR
-            </NavLink>
-          </li>
-          </ul>
-          ) : (
-            <ul className="flex flex-col items-center gap-6 mt-20 text-lg">
+          <ul className="flex flex-col items-center gap-6 mt-20 text-lg">
             <li>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-orange-500 font-bold"
-                  : "text-gray-300 hover:text-gray-500"
-              }
-              onClick={() => setIsOpen(false)}
-            >
-              LOG IN
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/register"
-              className={({ isActive }) =>
-                isActive
-                  ? "text-orange-500 font-bold"
-                  : "text-gray-300 hover:text-gray-500"
-              }
-              onClick={() => setIsOpen(false)}
-            >
-              REGISTER
-            </NavLink>
-          </li>
-        </ul> 
-          )}    
+              <NavLink
+                to="/diary"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-orange-500 font-bold"
+                    : "text-gray-300 hover:text-gray-500"
+                }
+                onClick={() => setIsOpen(false)}
+              >
+                DIARY
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/calculator"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-orange-500 font-bold"
+                    : "text-gray-300 hover:text-gray-500"
+                }
+                onClick={() => setIsOpen(false)}
+              >
+                CALCULATOR
+              </NavLink>
+            </li>
+          </ul>
+        ) : (
+          <ul className="flex flex-col items-center gap-6 mt-20 text-lg">
+            <li>
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-orange-500 font-bold"
+                    : "text-gray-300 hover:text-gray-500"
+                }
+                onClick={() => setIsOpen(false)}
+              >
+                LOG IN
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/register"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-orange-500 font-bold"
+                    : "text-gray-300 hover:text-gray-500"
+                }
+                onClick={() => setIsOpen(false)}
+              >
+                REGISTER
+              </NavLink>
+            </li>
+          </ul>
+        )}
       </div>
     </nav>
   );

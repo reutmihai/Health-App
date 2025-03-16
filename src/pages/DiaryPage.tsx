@@ -21,7 +21,7 @@ const DiaryPage: React.FC = () => {
         }
       />
 
-      <FoodList /> 
+      <FoodList />
     </div>
   );
 };

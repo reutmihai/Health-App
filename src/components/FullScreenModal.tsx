@@ -9,7 +9,7 @@ interface FullScreenModalProps {
   setGrams: React.Dispatch<React.SetStateAction<number | null>>;
   handleAddFood: () => void;
   handleCloseModal: () => void;
-  foods: Food[]; 
+  foods: Food[];
   setSelectedFood: React.Dispatch<React.SetStateAction<Food | null>>;
 }
 
@@ -51,7 +51,10 @@ const FullScreenModal: React.FC<FullScreenModalProps> = ({
     <div className="fixed inset-0 bg-white z-50 flex flex-col">
       {/* Navbar */}
       <Navbar />
-      <MobileUserBar isSearchModalOpen={true} handleCloseModal={handleCloseModal}/>
+      <MobileUserBar
+        isSearchModalOpen={true}
+        handleCloseModal={handleCloseModal}
+      />
 
       {/* Content of form*/}
       <div className="flex flex-col justify-center items-center mt-20 p-4">

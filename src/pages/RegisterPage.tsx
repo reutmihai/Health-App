@@ -16,11 +16,14 @@ const RegisterPage: React.FC = () => {
     try {
       await registerUser(name, email, password);
       navigate("/register");
-    } catch (err: any) {
-      setError(err.message); 
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
     }
   };
-
 
   return (
     <div className="flex sm:block items-center justify-center h-screen px-3 sm:mt-15 sm:px-0">
@@ -28,7 +31,7 @@ const RegisterPage: React.FC = () => {
       <div className="flex flex-col items-center w-full max-w-[400px] p-6">
         <h1 className="text-orange-400 font-bold text-3xl mb-10">REGISTER</h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full">
-          {error && <p className="text-red-500 text-sm mb-2">{error}</p>} 
+          {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
           <input
             placeholder="Name *"
             type="text"

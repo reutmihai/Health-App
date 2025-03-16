@@ -4,31 +4,32 @@ import Dashboard from "../components/Dashboard";
 import MobileUserBar from "../components/MobileUserbar";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth  } from "../auth/authService";
+import { auth } from "../auth/authService";
 
-const SharedLayout = () => {
+const SharedLayout: React.FC = () => {
   const location = useLocation();
-  const showDashboard = location.pathname === "/calculator" || location.pathname === "/diary";
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-  
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, (user) => {
-        setIsAuthenticated(!!user);
-      });
-  
-      return () => unsubscribe();
-    }, []);
+  const showDashboard =
+    location.pathname === "/calculator" || location.pathname === "/diary";
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    console.log(isAuthenticated);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthenticated(!!user);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  console.log(isAuthenticated);
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      {isAuthenticated && <MobileUserBar isSearchModalOpen={false}/>}
+      {isAuthenticated && <MobileUserBar isSearchModalOpen={false} />}
       <div className="flex flex-grow">
-        {showDashboard && <Dashboard />} 
+        {showDashboard && <Dashboard />}
         <main className="flex-grow">
-          <Outlet /> 
+          <Outlet />
         </main>
       </div>
     </div>

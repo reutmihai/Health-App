@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useFood } from "./FoodContext";
 import foods from "../data/products.json";
 import FoodList from "./FoodList";
 import FullScreenModal from "./FullScreenModal";
 
-const FoodInput = () => {
+const FoodInput : React.FC = () => {
   const { addFood } = useFood();
   const [query, setQuery] = useState("");
   const [filteredFoods, setFilteredFoods] = useState<Food[]>([]);
@@ -21,7 +21,6 @@ const FoodInput = () => {
     groupBloodNotAllowed: (boolean | null)[];
     __v: number;
   }
-  
 
   useEffect(() => {
     if (query.length > 0) {
@@ -50,7 +49,9 @@ const FoodInput = () => {
     const newFood = {
       title: selectedFood.title,
       grams,
-      calories: selectedFood.calories ? (grams / 100) * selectedFood.calories : 0,
+      calories: selectedFood.calories
+        ? (grams / 100) * selectedFood.calories
+        : 0,
     };
 
     addFood(newFood);
@@ -124,7 +125,7 @@ const FoodInput = () => {
           setGrams={setGrams}
           handleAddFood={handleAddFood}
           handleCloseModal={handleCloseModal}
-          foods={foods} 
+          foods={foods}
           setSelectedFood={setSelectedFood}
         />
       )}
