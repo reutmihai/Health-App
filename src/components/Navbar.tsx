@@ -55,7 +55,6 @@ const Navbar: React.FC = () => {
           <p className="text-gray-400">Loading...</p>
         ) : isAuthenticated ? (
           <div className="flex gap-5 items-center">
-            <Userbar />
             <NavLink
               to="/diary"
               className={({ isActive }) =>
